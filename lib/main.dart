@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_antpack/models/User.dart';
 import 'package:prueba_antpack/services/UserService.dart';
+import 'package:prueba_antpack/widgets/UserCard.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'JsonPlaceholder Users',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       home: MyHomePage(title: 'JSONPlaceholder Users'),
     );
@@ -29,7 +31,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   UserService _userService = UserService();
 
   @override
@@ -38,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: StreamBuilder(
+      body: StreamBuilder<List<User>>(
         stream: _userService.fetchData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -50,26 +51,22 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             );
           }
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headline4,
-              ),
-            ],
-          );
+          if (snapshot.connectionState == ConnectionState.done &&
+              snapshot.hasData) {
+            return ListView(
+              children: <Widget>[
+                for (User user in snapshot.data) UserCard(user)
+              ],
+            );
+          }
+          return Center(child: Text('No users'));
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Increment',
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

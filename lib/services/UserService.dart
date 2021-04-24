@@ -10,8 +10,6 @@ class UserService {
 
   List<User> _usersFromApi(http.Response response) {
     List<dynamic> data = jsonDecode(response.body);
-    print('data');
-    print(data[1]['id']);
     return [for (var user in data) User.fromMap(user)];
   }
 
