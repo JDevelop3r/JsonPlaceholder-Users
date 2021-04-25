@@ -17,9 +17,16 @@ class _UserListState extends State<UserList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-        centerTitle: true,
-      ),
+          title: Text(widget.title),
+          centerTitle: true,
+          bottom: PreferredSize(
+              preferredSize: Size.fromHeight(16.0),
+              child: Container(
+                color: Colors.white,
+                child: Center(
+                  child: Text('Click on an user card for details'),
+                ),
+              ))),
       body: StreamBuilder<List<User>>(
         stream: _userService.fetchData(),
         builder: (context, snapshot) {
