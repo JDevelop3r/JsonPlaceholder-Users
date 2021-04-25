@@ -27,14 +27,15 @@ class User {
 
     UserAddress userAddress = UserAddress(
         street: address['street'],
-        suite: address['street'],
-        city: address['street'],
-        zipcode: address['street'],
-        geo: GeoLocation(lat: geo['lat'], lgn: geo['lgn']));
+        suite: address['suite'],
+        city: address['city'],
+        zipcode: address['zipcode'],
+        geo: GeoLocation(
+            lat: double.parse(geo['lat']), lng: double.parse(geo['lng'])));
     return User(
         id: map['id'],
         name: map['name'],
-        userName: map['userName'],
+        userName: map['username'],
         email: map['email'],
         address: userAddress,
         phone: map['phone'],
@@ -71,8 +72,8 @@ class UserCompany {
 }
 
 class GeoLocation {
-  final String lat;
-  final String lgn;
+  final double lat;
+  final double lng;
 
-  GeoLocation({@required this.lat, @required this.lgn});
+  GeoLocation({@required this.lat, @required this.lng});
 }
