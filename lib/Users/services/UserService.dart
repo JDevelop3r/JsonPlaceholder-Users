@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:prueba_antpack/models/User.dart';
+import 'package:prueba_antpack/Users/models/User.dart';
 
 class UserService {
   final String _apiUrl = 'jsonplaceholder.typicode.com';

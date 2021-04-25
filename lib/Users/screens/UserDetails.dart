@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prueba_antpack/models/User.dart';
+import 'package:prueba_antpack/Users/models/User.dart';
 
 class UserDetails extends StatefulWidget {
   final User user;

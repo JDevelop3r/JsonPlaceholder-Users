@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:prueba_antpack/models/User.dart';
-import 'package:prueba_antpack/services/UserService.dart';
-import 'package:prueba_antpack/widgets/UserCard.dart';
+import 'package:prueba_antpack/Users/models/User.dart';
+import 'package:prueba_antpack/Users/services/UserService.dart';
+import 'package:prueba_antpack/Users/widgets/UserCard.dart';
 
 class UserList extends StatefulWidget {
   UserList({Key key, this.title}) : super(key: key);
@@ -24,7 +24,7 @@ class _UserListState extends State<UserList> {
               child: Container(
                 color: Colors.white,
                 child: Center(
-                  child: Text('Click on an user card for details'),
+                  child: Text('Tap on an user card for details'),
                 ),
               ))),
       body: StreamBuilder<List<User>>(

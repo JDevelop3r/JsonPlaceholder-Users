@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:prueba_antpack/models/User.dart';
-import 'package:prueba_antpack/screens/UserDetails.dart';
+import 'package:prueba_antpack/Users/models/User.dart';
+import 'package:prueba_antpack/Users/screens/UserDetails.dart';
 
 class UserCard extends StatelessWidget {
   final User user;
